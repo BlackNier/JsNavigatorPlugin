@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="js/Navigator.js" async></script>
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <title>导航栏插件测试</title>
+</head>
+
+<body>
+    <div class="nav" data-width="15%">
+        <div data-icon-title="home" class="mainTitle">导航栏主标题</div>
+        <li data-icon="category"><a href="#">链接1</a></li>
+        <li data-icon="category"><a href="#">链接2</a></li>
+        <li data-icon="category"><a href="#">链接3</a></li>
+        <div data-icon-title="subtitle" class="subTitle">导航栏副标题</div>
+        <div class="dropdown">
+            <li class="dropdown-Head">下拉菜单</li>
+            <ul class="dropdown-Menu">
+                <li><a href="#">菜单项1</a></li>
+                <li><a href="#">菜单项2</a></li>
+                <li><a href="#">菜单项3</a></li>
+            </ul>
+        </div>
+        <div class="splitLine"></div>
+        <li data-icon="category"><a href="#">链接4</a></li>
+        <li data-icon="category"><a href="#">链接5</a></li>
+    </div>
+    <div style="position: absolute; left:20%;">
+        <h1>导航栏插件演示</h1>
+        <p>
+            导航栏使用方法:<br>
+            <code style="text-indent:30px; font-family: 'Courier New', Courier, monospace; color:gray">
+                &lt;script src=&quot;js/Navigator.js&quot; async&gt;&lt;/script&gt;<br>
+                &lt;!--引入js文件--&gt;<br>
+                &lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot; type=&quot;text/css&quot; /&gt;<br>
+                &lt;!--引入css文件--&gt;<br>
+            </code>
+            <br>建立导航栏:<br>
+            <code style="text-indent:30px; font-family: 'Courier New', Courier, monospace; color:gray">
+                &lt;div class=&quot;nav&quot;&gt;<br>
+                &lt;div class=&quot;mainTitle&quot;&gt;导航栏主标题&lt;/div&gt;<br>
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;链接1&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;链接2&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;div class=&quot;subTitle&quot;&gt;导航栏副标题&lt;/div&gt;<br>
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;链接3&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;/div&gt;<br>
+            </code>
+            <br>下拉菜单:<br>
+            <code style="text-indent:30px; font-family: 'Courier New', Courier, monospace; color:gray">
+                &lt;div class=&quot;dropdown&quot;&gt;<br>
+                &lt;li class=&quot;dropdown-Head&quot;&gt;下拉菜单&lt;/li&gt;<br>
+                &lt;ul class=&quot;dropdown-Menu&quot;&gt;<br>
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;菜单项1&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;菜单项2&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;li&gt;&lt;a href=&quot;#&quot;&gt;菜单项3&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;/ul&gt;<br>
+                &lt;/div&gt;<br>   
+            </code>
+            <br>自定义导航栏宽度:<br>
+            <code style="text-indent:30px; font-family: 'Courier New', Courier, monospace; color:gray">
+                &lt;div data-width=&quot;220px&quot; class=&quot;nav&quot;&lt;/div&gt;<br>
+                &lt;!--定义px为单位的宽度--&gt;<br>
+                &lt;div data-width=&quot;15%&quot; class=&quot;nav&quot;&lt;/div&gt;<br>
+                &lt;!--定义%为单位的宽度--&gt;<br>
+            </code>
+            <br>添加图标:<br>
+            <code style="text-indent:30px; font-family: 'Courier New', Courier, monospace; color:gray">
+                &lt;div data-icon-title=&quot;home&quot; class=&quot;mainTitle&quot;&gt;导航栏主标题&lt;/div&gt;<br>
+                &lt;!--为标题添加图标--&gt;<br>
+                &lt;li data-icon=&quot;category&quot;&gt;&lt;a href=&quot;#&quot;&gt;链接1&lt;/a&gt;&lt;/li&gt;<br>
+                &lt;!--为列表项添加图标--&gt;<br>
+            </code>
+            <br>图标样式演示:<br>
+            <ul style="list-style: none; width:40%; text-indent: 10%;">
+                <li data-icon="home">data-icon="home"</li>
+                <li data-icon="category">data-icon="category"</li>
+                <li data-icon="subtitle">data-icon="subtitle"</li>
+            </ul>
+        </p>
+    </div>
+</body>
+
+</html>
