@@ -15,7 +15,7 @@ var NavigatorPlugin = (function () {
         if (isHide) {
             target = 0;
             target = Math.floor(window.screen.availWidth * target);
-            hideBtn.style.background = "url('./css/icons/arrow-lift.png')";
+            hideBtn.style.background = "url('./css/icons_light/arrow-lift.png')";
             hideBtn.style.backgroundSize = "100%";
             hideBtn.style.backgroundColor = "transparent";
             hideBtn.style.backgroundPosition = "center";
@@ -25,7 +25,7 @@ var NavigatorPlugin = (function () {
             if (isPercentage) target = -navWidth * 0.009;
             else target = -0.12;
             target = Math.floor(window.screen.availWidth * target);
-            hideBtn.style.background = "url('./css/icons/arrow-right.png')";
+            hideBtn.style.background = "url('./css/icons_light/arrow-right.png')";
             hideBtn.style.backgroundSize = "100%";
             hideBtn.style.backgroundColor = "transparent";
             hideBtn.style.backgroundPosition = "center";
@@ -47,14 +47,14 @@ var NavigatorPlugin = (function () {
     function dropdown() {
         if (!isdropdown) {
             dropdownMenu.style.display = "block";
-            dropdownHead.style.background = "url('./css/icons/arrow-up.png')";
+            dropdownHead.style.background = "url('./css/icons_light/arrow-up.png')";
             dropdownHead.style.backgroundSize = "10%";
             dropdownHead.style.backgroundPosition = "left";
             dropdownHead.style.backgroundRepeat = "no-repeat";
         }
         else {
             dropdownMenu.style.display = "none";
-            dropdownHead.style.background = "url('./css/icons/arrow-down.png')";
+            dropdownHead.style.background = "url('./css/icons_light/arrow-down.png')";
             dropdownHead.style.backgroundSize = "10%";
             dropdownHead.style.backgroundPosition = "left";
             dropdownHead.style.backgroundRepeat = "no-repeat";
@@ -64,7 +64,7 @@ var NavigatorPlugin = (function () {
     function addIcon() {
         for (var i = 0; i < allListItems.length; i++) {
             if (allListItems[i].getAttribute("data-icon") != null) {
-                allListItems[i].style.background = "url('./css/icons/" + allListItems[i].getAttribute("data-icon") + ".png')";
+                allListItems[i].style.background = "url('./css/icons_light/" + allListItems[i].getAttribute("data-icon") + ".png')";
                 allListItems[i].style.backgroundSize = "10%";
                 allListItems[i].style.backgroundPosition = "left";
                 allListItems[i].style.backgroundRepeat = "no-repeat";
@@ -72,7 +72,7 @@ var NavigatorPlugin = (function () {
         }
         for (var i = 0; i < allDivItems.length; i++) {
             if (allDivItems[i].getAttribute("data-icon-title") != null) {
-                allDivItems[i].style.background = "url('./css/icons/" + allDivItems[i].getAttribute("data-icon-title") + ".png')";
+                allDivItems[i].style.background = "url('./css/icons_light/" + allDivItems[i].getAttribute("data-icon-title") + ".png')";
                 allDivItems[i].style.backgroundSize = "12%";
                 allDivItems[i].style.backgroundPosition = "left";
                 allDivItems[i].style.backgroundRepeat = "no-repeat";
