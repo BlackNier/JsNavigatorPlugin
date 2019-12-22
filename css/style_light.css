@@ -44,13 +44,14 @@
 }
 
 .dropdown-Menu{
+    height:0;
     margin:0px;
     width:100%;
     font-size:18px;
     padding:0%;
-    background-color:transparent;
     color: black;
-    display: none;
+    overflow: hidden;
+    transition: height ease 0.5s;
 }
 
 .dropdown-Head{
@@ -119,4 +120,7 @@ a
 
 .nav li:hover{
     animation: "liOnmouse" 0.5s ease forwards !important;
+    border-left-color:gray;
+    border-left-width: 2px;
+    border-left:solid;
 }
