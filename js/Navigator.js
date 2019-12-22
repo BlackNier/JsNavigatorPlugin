@@ -1,8 +1,10 @@
 var NavigatorPlugin = (function () {
+    var isDark = false;
     var navWidth = 0;
     var isPercentage = false;
     var isHide = false;
     var isdropdown = false;
+    var cssfile = document.createElement("link")
     var nav = document.querySelector(".nav");
     var hideBtn = document.createElement("button");
     var styleBtn = document.createElement("button");
@@ -47,6 +49,8 @@ var NavigatorPlugin = (function () {
     function dropdown() {
         if (!isdropdown) {
             dropdownMenu.style.display = "block";
+            if (isDark) dropdownHead.style.background = "url('./css/icons_dark/arrow-up.png')";
+            else dropdownHead.style.background = "url('./css/icons_light/arrow-up.png')";
             dropdownHead.style.background = "url('./css/icons_light/arrow-up.png')";
             dropdownHead.style.backgroundSize = "10%";
             dropdownHead.style.backgroundPosition = "left";
@@ -54,7 +58,8 @@ var NavigatorPlugin = (function () {
         }
         else {
             dropdownMenu.style.display = "none";
-            dropdownHead.style.background = "url('./css/icons_light/arrow-down.png')";
+            if (isDark) dropdownHead.style.background = "url('./css/icons_dark/arrow-down.png')";
+            else dropdownHead.style.background = "url('./css/icons_light/arrow-down.png')";
             dropdownHead.style.backgroundSize = "10%";
             dropdownHead.style.backgroundPosition = "left";
             dropdownHead.style.backgroundRepeat = "no-repeat";
@@ -64,7 +69,8 @@ var NavigatorPlugin = (function () {
     function addIcon() {
         for (var i = 0; i < allListItems.length; i++) {
             if (allListItems[i].getAttribute("data-icon") != null) {
-                allListItems[i].style.background = "url('./css/icons_light/" + allListItems[i].getAttribute("data-icon") + ".png')";
+                if (isDark) allListItems[i].style.background = "url('./css/icons_dark/" + allListItems[i].getAttribute("data-icon") + ".png')";
+                else allListItems[i].style.background = "url('./css/icons_light/" + allListItems[i].getAttribute("data-icon") + ".png')";
                 allListItems[i].style.backgroundSize = "10%";
                 allListItems[i].style.backgroundPosition = "left";
                 allListItems[i].style.backgroundRepeat = "no-repeat";
@@ -72,7 +78,8 @@ var NavigatorPlugin = (function () {
         }
         for (var i = 0; i < allDivItems.length; i++) {
             if (allDivItems[i].getAttribute("data-icon-title") != null) {
-                allDivItems[i].style.background = "url('./css/icons_light/" + allDivItems[i].getAttribute("data-icon-title") + ".png')";
+                if (isDark) allDivItems[i].style.background = "url('./css/icons_dark/" + allDivItems[i].getAttribute("data-icon-title") + ".png')";
+                else allDivItems[i].style.background = "url('./css/icons_light/" + allDivItems[i].getAttribute("data-icon-title") + ".png')";
                 allDivItems[i].style.backgroundSize = "12%";
                 allDivItems[i].style.backgroundPosition = "left";
                 allDivItems[i].style.backgroundRepeat = "no-repeat";
@@ -80,9 +87,25 @@ var NavigatorPlugin = (function () {
         }
     }
     function changeStyle() {
-
+        if (isDark) {
+            cssfile.setAttribute("href", "./css/style_light.css");
+            if(!isdropdown) dropdownHead.style.background = "url('./css/icons_dark/arrow-down.png')";
+            else dropdownHead.style.background = "url('./css/icons_dark/arrow-up.png')";
+        }
+        else {
+            cssfile.setAttribute("href", "./css/style_dark.css");
+            if(!isdropdown) dropdownHead.style.background = "url('./css/icons_light/arrow-down.png')";
+            else dropdownHead.style.background = "url('./css/icons_light/arrow-up.png')";
+        }
+        isDark = !isDark;
+        addIcon();
     }
     function _init() {
+        cssfile.setAttribute("rel", "stylesheet");
+        cssfile.setAttribute("type", "text/css");
+        if(isDark) cssfile.setAttribute("href", "./css/style_dark.css");
+        else cssfile.setAttribute("href", "./css/style_light.css");
+        document.getElementsByTagName("head")[0].appendChild(cssfile);
         var navWidthStr = nav.getAttribute("data-width");
         if (navWidthStr != null) {
             if (navWidthStr[navWidthStr.length - 1] == 'x') {
@@ -93,7 +116,6 @@ var NavigatorPlugin = (function () {
                 navWidth = parseInt(navWidthStr.slice(0, length - 1));
             }
             nav.style.width = navWidthStr;
-            //console.log(navWidthStr);
         }
         nav.appendChild(hideBtn);
         nav.appendChild(styleBtn);

@@ -2,13 +2,14 @@
 {
     to
     {
-        background-color:rgba(224, 224, 224, 0.377) ;
+        background-color:rgb(85, 85, 85) ;
     }
 }
 .nav{
+    color:white;
     width: 15%;
     height: 100%;
-    background-color: black;
+    background-color: rgb(43, 43, 43);
     position: fixed;
     top:0;
     left:0;
@@ -21,7 +22,7 @@
     padding: 5%;
     font-size:24px;
     width:80%;
-    background-color:rgba(224, 224, 224, 0.377) !important;
+    background-color:rgb(85, 85, 85) !important;
     text-indent:10%;
 }
 
@@ -29,7 +30,7 @@
     padding: 4%;
     font-size:20px;
     width:82%;
-    background-color:rgba(224, 224, 224, 0.377) !important;
+    background-color:rgb(85, 85, 85) !important;
     text-indent:10%;
 }
 
@@ -39,7 +40,7 @@
     width:100%;
     font-size:18px;
     background-color:transparent;
-    color: black;
+    color: white;
     list-style: none;
 }
 
@@ -49,7 +50,7 @@
     font-size:18px;
     padding:0%;
     background-color:transparent;
-    color: black;
+    color: rgb(151, 144, 144);
     display: none;
 }
 
@@ -62,11 +63,10 @@
     font-size:18px;
     background-color:transparent;
     cursor: pointer;
-    color: black;
+    color: rgb(151, 144, 144);
 }
 
 .dropdown-Head:hover{
-    /*background-color: rgb(238, 238, 238) !important;*/
     animation: "liOnmouse" 0.5s ease forwards !important;
 }
 
@@ -74,7 +74,7 @@
     margin-left:3%;
     margin-right:10%;
     width: 87%;
-    border-top: solid rgb(187, 187, 187) 1px;
+    border-top: solid rgb(65, 64, 64) 1px;
 }
 #hideBtn{
     background-image: url("./icons_light/arrow-lift.png");
@@ -92,28 +92,31 @@
 }
 
 #styleBtn{
+    background:url("./icons_dark/style.png");
+    background-size:100%;
     position: absolute;
-    bottom:10%;
-    left:10%;
-    width:20%;
-    height:5%;
+    bottom:5%;
+    left:5%;
+    width:30px;
+    height:30px;
     border: none;
     cursor: pointer;
 }
 a
 {
     text-decoration-line: none;
-    color: black;
+    color: white;
 }
 
 .nav li{
+    color:white;
     width:84%;
     font-size:18px;
     padding:3%;
     text-indent:10%;
     border-bottom:solid;
     border-width: 1px;
-    border-color:rgb(238, 238, 238);
+    border-color:rgb(59, 59, 59);
 }
 
 .nav li:hover{
