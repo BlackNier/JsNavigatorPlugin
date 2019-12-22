@@ -19,7 +19,7 @@
 .mainTitle{
     padding: 5%;
     font-size:24px;
-    width:80%;
+    width:90%;
     background-color:rgb(199, 199, 199) !important;
     text-indent:10%;
 }
@@ -27,7 +27,7 @@
 .subTitle{
     padding: 4%;
     font-size:20px;
-    width:82%;
+    width:92%;
     background-color:rgb(199, 199, 199) !important;
     text-indent:10%;
 }
@@ -76,16 +76,17 @@
     border-top: solid rgb(199, 199, 199) 1px;
 }
 #hideBtn{
-    background-image: url("./icons_light/arrow-lift.png");
-    background-size: 100%;
-    background-position: center; 
-    background-color: transparent;
-    background-repeat: no-repeat;
     position: absolute;
-    top:0px;
-    right:0px;
-    width:10%;
-    height:100%;
+    background-image: url("./icons_light/hide_dragable.png");
+    background-size: 80%;
+    background-position: center; 
+    background-color: white;
+    background-repeat: no-repeat;
+    box-shadow: 1px 5px 5px 3px #888888;
+    top:100px;
+    left:250px;
+    width:35px;
+    height:35px;
     border: none;
     cursor: pointer;
 }
@@ -108,7 +109,7 @@ a
 }
 
 .nav li{
-    width:84%;
+    width:93%;
     font-size:18px;
     padding:3%;
     text-indent:10%;

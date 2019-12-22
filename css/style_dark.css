@@ -6,7 +6,6 @@
     }
 }
 .nav{
-    color:white;
     width: 15%;
     height: 100%;
     background-color: rgb(43, 43, 43);
@@ -22,6 +21,7 @@
     padding: 5%;
     font-size:24px;
     width:80%;
+    color:white;
     background-color:rgb(85, 85, 85) !important;
     text-indent:10%;
 }
@@ -30,6 +30,7 @@
     padding: 4%;
     font-size:20px;
     width:82%;
+    color:white;
     background-color:rgb(85, 85, 85) !important;
     text-indent:10%;
 }

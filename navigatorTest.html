@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <div class="nav" data-width="15%">
+    <div class="nav" data-width="15%" data-dragable="false">
         <div data-icon-title="home" class="mainTitle">导航栏主标题</div>
         <li data-icon="category"><a href="#">链接1</a></li>
         <li data-icon="category"><a href="#">链接2</a></li>
@@ -76,6 +76,11 @@
                 <li data-icon="subtitle">data-icon="subtitle"</li>
             </ul>
             <br>点击风格按钮可切换导航栏风格(亮/暗)<br>
+            <br>通过设置data-dragable="true"属性来改变导航栏的样式<br>
+            <code style="text-indent:30px; font-family: 'Courier New', Courier, monospace; color:gray">
+                &lt;div data-dragable=&quot;true&quot; class=&quot;nav&quot;&lt;/div&gt;<br>
+                &lt;!--变为可拖拽的导航栏,双击可展开或关闭导航栏--&gt;<br>
+            </code>
         </p>
     </div>
 </body>

@@ -1,5 +1,7 @@
 var NavigatorPlugin = (function () {
     var isDark = false;
+    var isDragable = false;
+    var isHideBtnDrop = true;
     var navWidth = 0;
     var isPercentage = false;
     var isHide = false;
@@ -13,29 +15,33 @@ var NavigatorPlugin = (function () {
     var dropdownHead = document.querySelector(".dropdown-Head");
     var dropdownMenu = document.querySelector(".dropdown-Menu");
     var dropdownListHeight = "0";
-    var isfirstDrop=true;
+    var isfirstDrop = true;
     function move(element) {
         var target = 0;
         if (isHide) {
             target = 0;
             target = Math.floor(window.screen.availWidth * target);
-            if (isDark) hideBtn.style.background = "url('./css/icons_dark/arrow_left.png')";
-            else hideBtn.style.background = "url('./css/icons_light/arrow-lift.png')";
-            hideBtn.style.backgroundSize = "100%";
-            hideBtn.style.backgroundColor = "transparent";
-            hideBtn.style.backgroundPosition = "center";
-            hideBtn.style.backgroundRepeat = "no-repeat";
+            if (!isDragable) {
+                if (isDark) hideBtn.style.background = "url('./css/icons_dark/arrow_left.png')";
+                else hideBtn.style.background = "url('./css/icons_light/arrow-lift.png')";
+                hideBtn.style.backgroundSize = "100%";
+                hideBtn.style.backgroundColor = "transparent";
+                hideBtn.style.backgroundPosition = "center";
+                hideBtn.style.backgroundRepeat = "no-repeat";
+            }
         }
         else {
             if (isPercentage) target = -navWidth * 0.009;
             else target = -0.12;
             target = Math.floor(window.screen.availWidth * target);
-            if (isDark) hideBtn.style.background = "url('./css/icons_dark/arrow_right.png')";
-            else hideBtn.style.background = "url('./css/icons_light/arrow-right.png')";
-            hideBtn.style.backgroundSize = "100%";
-            hideBtn.style.backgroundColor = "transparent";
-            hideBtn.style.backgroundPosition = "center";
-            hideBtn.style.backgroundRepeat = "no-repeat";
+            if (!isDragable) {
+                if (isDark) hideBtn.style.background = "url('./css/icons_dark/arrow_right.png')";
+                else hideBtn.style.background = "url('./css/icons_light/arrow-right.png')";
+                hideBtn.style.backgroundSize = "100%";
+                hideBtn.style.backgroundColor = "transparent";
+                hideBtn.style.backgroundPosition = "center";
+                hideBtn.style.backgroundRepeat = "no-repeat";
+            }
         }
         isHide = !isHide;
         clearInterval(element.timeId);
@@ -52,11 +58,11 @@ var NavigatorPlugin = (function () {
     }
     function dropdown() {
         if (!isdropdown) {
-            if(isfirstDrop){
-            dropdownMenu.style.height = "auto";
-            dropdownListHeight = dropdownMenu.offsetHeight;
-            dropdownMenu.style.height="0";
-            isfirstDrop=false;
+            if (isfirstDrop) {
+                dropdownMenu.style.height = "auto";
+                dropdownListHeight = dropdownMenu.offsetHeight;
+                dropdownMenu.style.height = "0";
+                isfirstDrop = false;
             }
             dropdownMenu.style.height = dropdownListHeight + "px";
             if (isDark) dropdownHead.style.background = "url('./css/icons_dark/arrow_up.png')";
@@ -113,11 +119,44 @@ var NavigatorPlugin = (function () {
         isDark = !isDark;
         addIcon();
     }
+    function dragInit() {
+        var x, y;
+        hideBtn.onmousedown = function (e) {
+            var e = e || window.event;
+            x = e.clientX - hideBtn.offsetLeft;
+            y = e.clientY - hideBtn.offsetTop;
+            isHideBtnDrop = true;
+        }
+        hideBtn.ondblclick = function () { move(nav) };
+        document.onmousemove = function (e) {
+            if (isHideBtnDrop) {
+                var e = e || window.event;
+                var moveX = e.clientX - x;
+                var moveY = e.clientY - y;
+                var maxX = document.documentElement.clientWidth - hideBtn.offsetWidth;
+                var maxY = document.documentElement.clientHeight - hideBtn.offsetHeight;
+                moveX = Math.min(maxX, Math.max(0, moveX));
+                moveY = Math.min(maxY, Math.max(0, moveY));
+                hideBtn.style.left = moveX + "px";
+                hideBtn.style.top = moveY + "px";
+            } else {
+                return;
+            }
+        }
+        document.onmouseup = function () {
+            isHideBtnDrop = false;
+        }
+    }
     function _init() {
         cssfile.setAttribute("rel", "stylesheet");
         cssfile.setAttribute("type", "text/css");
-        if (isDark) cssfile.setAttribute("href", "./css/style_dark.css");
-        else cssfile.setAttribute("href", "./css/style_light.css");
+        if(nav.getAttribute("data-dragable")=="true") isDragable=true;
+        else isDragable=false;
+        if (isDragable) cssfile.setAttribute("href", "./css/style_dragable.css");
+        else {
+            if (isDark) cssfile.setAttribute("href", "./css/style_dark.css");
+            else cssfile.setAttribute("href", "./css/style_light.css");
+        }
         document.getElementsByTagName("head")[0].appendChild(cssfile);
         var navWidthStr = nav.getAttribute("data-width");
         if (navWidthStr != null) {
@@ -130,18 +169,19 @@ var NavigatorPlugin = (function () {
             }
             nav.style.width = navWidthStr;
         }
-        nav.appendChild(hideBtn);
-        nav.appendChild(styleBtn);
+        if (!isDragable) nav.appendChild(hideBtn);
+        else document.getElementsByTagName("body")[0].appendChild(hideBtn);
+        if (!isDragable) nav.appendChild(styleBtn);
         hideBtn.id = "hideBtn";
         styleBtn.id = "styleBtn";
-        hideBtn.onclick = function () { move(nav) };
+        if (!isDragable) hideBtn.onclick = function () { move(nav) };
+        else dragInit();
         styleBtn.onclick = function () { changeStyle() };
         if (dropdownHead != null) {
             dropdownHead.onclick = function () { dropdown() };
         }
         addIcon();
     };
-
     return {
         init: _init,
     };
